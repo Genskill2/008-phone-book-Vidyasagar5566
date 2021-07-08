@@ -1,3 +1,4 @@
+lines (238 sloc)  6.98 KB
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -152,20 +153,17 @@ entry *load_entries(FILE *fp) {
   entry *tmp = NULL;
   /* Description of %20[^,\n]
      % is the start of the specifier (like %s, %i etc.)
-
      20 is the maximum number of characters that this will take. We
         know that names and phone numbers will be 20 bytes maximum so
         we limit it to that. %20s will read in 20 character strings
         (including the , to separate the name and phone number. That's
         why we use
-
     [^,\n] Square brackets are used to indicate a set of allowed
            characters [abc] means only a, b, or c. With the ^, it's
            used to specify a set of disallowed characters. So [^abc]
            means any character *except* a, b, or c. [^,] means any
            character except a , [^,\n] means any character except a
            comma(,) or a newline(\n).
-
     %20[^,\n] will match a string of characters with a maximum length
      of 20 characters that doesn't have a comma(,) or a newline(\n).
   */        
